@@ -8,5 +8,26 @@
   },
   "devDependencies": {
     "nodemon": "^3.1.9"
-  }
+  },
+  "name": "501230231_cd_backend1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Duylee007/501230231_cd_backend1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  
+  "bugs": {
+    "url": "https://github.com/Duylee007/501230231_cd_backend1/issues"
+  },
+  "homepage": "https://github.com/Duylee007/501230231_cd_backend1#readme"
 }
