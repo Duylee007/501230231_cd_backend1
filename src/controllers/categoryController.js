@@ -1,4 +1,5 @@
 import CategoryModel from "../models/categoryModel.js";
+import { ObjectId } from "mongodb";
 export async function listCategory(req, res) {
   try {
     const categories = await CategoryModel.find();
@@ -13,8 +14,12 @@ export async function listCategory(req, res) {
 }
 
 export async function renderpageCreateCategory(req, res) {
-  res.render("pages/categories/create", {
+  res.render("pages/categories/form", {
     title: "Create Categories",
+    mode: "Create",
+    category: {
+
+    }
   });
 }
 
@@ -28,5 +33,40 @@ export async function createCategory(req, res) {
   } catch (error) {
     console.log(error);
     res.send("Tạo loại sản phẩm không thành công!");
+  }
+}
+
+
+
+export async function renderpageUpdateCategory(req, res) {
+  const { id } = req.params
+  const category = await CategoryModel.findOne({_id: new ObjectId(id)})
+  if(category){
+    res.render("pages/categories/form", {
+      title: "Create Categories",
+      mode: "Update",
+      category: category
+    });
+  }else{
+    res.send("Hiện không có sản phẩm nào phù hợp!");
+  }
+}
+export async function UpdateCategory(req, res) {
+
+  const { code, name, image, id } = req.body;
+  try {
+     await CategoryModel.updateOne(
+     {_id: new ObjectId(id)}, 
+    {
+      code, 
+      name, 
+      image, 
+      updatedAt: new Date()
+    });
+    res.send("Cập nhật sản phẩm thành công!");
+    res.redirect("/categories")
+  } catch (error) {
+    console.log(error);
+    res.send("Cập nhật loại sản phẩm không thành công!");
   }
 }
