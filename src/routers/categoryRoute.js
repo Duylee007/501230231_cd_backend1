@@ -4,7 +4,9 @@ import {
   createCategory,
   renderpageCreateCategory,
   renderpageUpdateCategory,
-  UpdateCategory
+  UpdateCategory,
+  renderpageDeleteCategory,
+  deleteCategory
 } from "../controllers/categoryController.js";
 const router = express.Router();
 
@@ -15,5 +17,8 @@ const router = express.Router();
 
  router.get("/update/:id", renderpageUpdateCategory) //render ra from update
  router.post("/update/:id", UpdateCategory)
+
+ router.get("/delete/:id", renderpageDeleteCategory) //render ra from update
+ router.post("/delete", deleteCategory)
  
  export default router;
